@@ -6,6 +6,9 @@ var bodyParser = require('body-parser');
 // Inicializar variables
 var app = express();
 
+//Puerto para Heroku
+const port = process.env.PORT || 3000;
+
 //Body Parser
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }))
@@ -37,6 +40,7 @@ app.use('/', appRoutes);
 
 
 //Escuchando pelticiones
-app.listen(3000, () => {
-	console.log('Express server puerto 3000: \x1b[32m%s\x1b[0m', 'online');
-})
+app.listen(port, () => {
+	//console.log('Express server puerto 3000: \x1b[32m%s\x1b[0m', 'online');
+	console.log(`Escuchando peticiones en el puerto ${ port }`);
+});

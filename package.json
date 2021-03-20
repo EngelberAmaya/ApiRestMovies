@@ -4,7 +4,8 @@
   "description": "Api Rest de un crud de Peliculas y su clasisficación",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon app.js",
+    "start": "node app.js",
+    "nodemon": "nodemon app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Engelber Amaya",
