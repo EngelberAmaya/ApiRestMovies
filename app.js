@@ -2,12 +2,10 @@
 var express = require('express');
 var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
+require('./config/config')
 
 // Inicializar variables
 var app = express();
-
-//Puerto para Heroku
-const port = process.env.PORT || 3000;
 
 //Body Parser
 // parse application/x-www-form-urlencoded
@@ -22,7 +20,7 @@ var movieRoutes = require('./routes/movie');
 
 
 // Conexión a la base de datos
-mongoose.connection.openUri('mongodb://localhost:27017/moviesDB', (err, res) => {
+mongoose.connection.openUri(process.env.URLDB, (err, res) => {
 
 	if (err) throw err;
 
@@ -40,7 +38,7 @@ app.use('/', appRoutes);
 
 
 //Escuchando pelticiones
-app.listen(port, () => {
+app.listen(process.env.PORT, () => {
 	//console.log('Express server puerto 3000: \x1b[32m%s\x1b[0m', 'online');
-	console.log(`Escuchando peticiones en el puerto ${ port }`);
+	console.log(`Escuchando peticiones en el puerto ${ process.env.PORT }`);
 });
