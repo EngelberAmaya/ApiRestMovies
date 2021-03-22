@@ -19,7 +19,7 @@ var clasificationRoutes = require('./routes/clasificacion');
 var movieRoutes = require('./routes/movie');
 
 
-// Conexión a la base de datos
+// Conexión a la base de datos -//inyeccion de dependencia
 mongoose.connection.openUri(process.env.URLDB, (err, res) => {
 
 	if (err) throw err;
