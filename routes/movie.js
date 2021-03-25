@@ -9,7 +9,25 @@ var Movie = require('../models/movie');
 
 app.get('/', (req, res, next) => {
 
-	Movie.find({})
+
+	Movie.find({}, (err, movies) => {
+
+		if (err) {
+			return res.status(500).json({
+				ok: false,
+				mensaje: 'Error cargando la película',
+				errors: err
+			});
+		}
+
+		res.status(200).json({
+			ok: true,
+			movies: movies
+		});
+
+	})
+
+	/*Movie.find({})
 		 .populate('clasification')
 		 .exec(
 
@@ -28,7 +46,7 @@ app.get('/', (req, res, next) => {
 					movies: movies
 				});
 
-			})
+			})*/
 
 
 });
